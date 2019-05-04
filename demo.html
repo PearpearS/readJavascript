@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	.c{
+		width: 300px;
+		height: 300px;
+		background: red;
+	}
+	.b{
+		width: 200px;
+		height: 200px;
+		background: blue;
+	}
+	.a{
+		width: 50px;
+		height: 50px;
+		background: green;
+	}
+
+	</style>
+</head>
+<body>
+	<div class="c">3</div>
+	<div class="b">2</div>
+	<div class="a" draggable="true">1</div>
+	<input type="text" >
+	<img src="./2.jpg">
+	<a href="http://www.bydmusic.top/">blog</a>
+
+	<script type="text/javascript">
+		var div = document.getElementsByTagName('div')[2]
+		var div2 = document.getElementsByTagName('div')[1]
+		div.addEventListener('dragstart',function(){
+			console.log(1)
+		})
+		div.addEventListener('drag',()=>{
+			console.log('drag')
+		})
+		div.addEventListener('dragend',()=>{
+			console.log(3)
+			div2.appendChild(div)
+		})
+
+	</script>
+</body>
+</html>

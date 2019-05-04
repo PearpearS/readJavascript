@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>btn122</button>
+	<script type="text/javascript">
+// 	为方便我们找到合适的人才，现发一道技术面试筛选题目给您，希望您能够给出示例代码或者伪代码或者解题步骤即可，我们着重看一下您的实际项目经验和算法理解程度。
+
+// 题目：写一个函数，输入一段合法的字符数组(n<1024)，请用JavaScript从字符数组中找出最大的数值，比如(asc23423v234)，得到的最大数值是23423。注意：数值为常用数值表达方式。（建议不要用正则，基本是死路）
+
+// 部分测试用例：
+
+// 1）输入asc23423v234，输出23423
+
+// 2）输入pppp12bbbbbb12.31cccc，输出31
+
+// 3）输入54.4..6Ⅲ-44.4+++5-4，输出54.4
+
+// 4）输入3.2.4.5.7.8.3.9.2.1，输出9.2
+
+	function num (x) {
+	  var arr = []
+	  var arr2= []
+	  var count = 0 // 数组下标
+	  var temp = "" 
+	  var spot = 0 // 小数点出现计数
+	  for(var i = 0;i<x.length;i++){
+	  	if(parseFloat(x[i])){
+	  	  temp = temp + parseFloat(x[i])
+	  	  arr[count] = temp
+	  	} else if (x[i] === "." && spot < 1) {
+	  	  temp = temp + "."
+	  	  spot++
+	  	} else if (spot === 1) {
+	  		temp = temp + "."
+	  	  arr2.push(temp)
+	  	  temp = ""
+	  	}
+	  	else {
+	  	  count++
+	  	  temp = ""
+	  	  spot = 0
+	  	}
+	  }
+	  arr = arr.filter((item) => {
+	  	return item != undefined 
+	  })
+	  console.log(arr)
+	  arr = arr.sort(compare)
+	  
+	  //console.log(arr[0])
+	}
+
+	function compare(value1,value2) {
+	  if(value1 > value2) {
+	  	return -1
+	  } else if (value1 < value2) {
+	  	return 1
+	  } else {
+	  	return
+	  }
+	}
+	num("asc23423v234")
+	num("pppp12bbbbbb12.31cccc")
+	num("54.4..6Ⅲ-44.4+++5-4")
+	num("3.2.4.5.7.8.3.9.2.1")
+	</script>
+</body>
+</html>
